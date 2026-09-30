@@ -130,6 +130,101 @@
             return;
 
         }
+         const url = `https://api.maptiler.com/geocoding/${encodeURIComponent(query)}.json?key=${API_KEY}`;
+
+
+
+        try {
+
+            const response = await fetch(url);
+
+            const data = await response.json();
+
+
+
+            if (!data.features || data.features.length === 0) {
+
+                errorMsg.innerText = "Lokasi tidak ditemukan.";
+
+                errorMsg.style.display = 'block';
+
+                return;
+
+            }
+
+
+
+            const hasil = data.features[0];
+
+            const lon = hasil.geometry.coordinates[0];
+
+            const lat = hasil.geometry.coordinates[1];
+
+            const lokasi = hasil.text || hasil.matching_text;
+
+
+
+            let negara = "-", provinsi = "-", kecamatan = "-";
+
+
+
+            if (hasil.context) {
+
+                hasil.context.forEach(ctx => {
+
+                    if (ctx.id.startsWith('country')) negara = ctx.text;
+
+                    if (ctx.id.startsWith('region') || ctx.id.startsWith('state')) provinsi = ctx.text;
+
+                    if (ctx.id.startsWith('county') || ctx.id.startsWith('district')) kecamatan = ctx.text;
+
+                });
+
+            }
+
+
+
+            document.getElementById('resLokasi').innerText = lokasi;
+
+            document.getElementById('resKecamatan').innerText = kecamatan;
+
+            document.getElementById('resProvinsi').innerText = provinsi;
+
+            document.getElementById('resNegara').innerText = negara;
+
+            document.getElementById('resLon').innerText = lon;
+
+            document.getElementById('resLat').innerText = lat;
+
+
+
+            resultBox.style.display = 'block';
+
+
+
+        } catch (error) {
+
+            errorMsg.innerText = "Gagal mengambil data dari server.";
+
+            errorMsg.style.display = 'block';
+
+        }
+
+    }
+
+
+
+    document.getElementById("inputLokasi").addEventListener("keypress", function(event) {
+
+        if (event.key === "Enter") {
+
+            event.preventDefault();
+
+            fetchData();
+
+        }
+
+    });
 </script>
 
 </body>
