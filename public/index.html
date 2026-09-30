@@ -105,6 +105,31 @@
 
 <script>
   const API_KEY = "TmW3n2IbOKaZxkghOoYB";
+    async function fetchData() {
+
+        const query = document.getElementById('inputLokasi').value.trim();
+
+        const errorMsg = document.getElementById('errorMsg');
+
+        const resultBox = document.getElementById('resultBox');
+
+
+
+        errorMsg.style.display = 'none';
+
+        resultBox.style.display = 'none';
+
+
+
+        if (!query) {
+
+            errorMsg.innerText = "Input lokasi tidak boleh kosong!";
+
+            errorMsg.style.display = 'block';
+
+            return;
+
+        }
 </script>
 
 </body>
