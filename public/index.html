@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pencarian Geolocation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            margin-top: 0;
+            text-align: center;
+            color: #2c3e50;
+        }
+        .input-group {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+            outline: none;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            display: none;
+            margin-top: 15px;
+        }
+        .result-item {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .label {
+            font-weight: bold;
+            display: inline-block;
+            width: 100px;
+            color: #555;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>NAMA: M.Ridho Akbar</h2>
+    <h2>NIM:20240140142</h2>
+    <h2>Data Lokasi</h2>
+    
+    
+    <div class="error" id="errorMsg"></div>
+
+    <div class="input-group">
+        <input type="text" id="inputLokasi" placeholder="Masukkan lokasi...">
+        <button onclick="fetchData()">Cari</button>
+    </div>
+
+    <div class="result" id="resultBox">
+        <div class="result-item"><span class="label">Lokasi:</span> <span id="resLokasi">-</span></div>
+        <div class="result-item"><span class="label">Kecamatan:</span> <span id="resKecamatan">-</span></div>
+        <div class="result-item"><span class="label">Provinsi:</span> <span id="resProvinsi">-</span></div>
+        <div class="result-item"><span class="label">Negara:</span> <span id="resNegara">-</span></div>
+        <div class="result-item"><span class="label">Longitude:</span> <span id="resLon">-</span></div>
+        <div class="result-item"><span class="label">Latitude:</span> <span id="resLat">-</span></div>
+    </div>
+</div>
+
+<script>
+ 
+</script>
+
+</body>
+</html>
